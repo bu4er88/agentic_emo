@@ -118,18 +118,31 @@ python -m agentic_emo.main -v
 ```
 agentic_emo/
 ├── __init__.py
-├── main.py            # CLI entry point
-├── mind.py            # HumanMind orchestrator
-├── emotions.py        # Emotion Engine (dynamic prompt vars)
-├── llm.py             # OpenAI-compatible LLM client
-├── supervisor1.py     # Unconscious reflex coordinator
-├── supervisor2.py     # Conscious reasoning agent
+├── main.py                        # CLI entry point
+├── mind.py                        # HumanMind orchestrator
+├── emotions.py                    # Emotion Engine (dynamic prompt vars)
+├── llm.py                         # OpenAI-compatible LLM client
+├── supervisor_unconscious.py      # Unconscious reflex coordinator
+├── supervisor_conscious.py        # Conscious reasoning agent
 ├── prompts/
 │   ├── __init__.py
-│   ├── profiles.py    # Male/female personality prompts
-│   └── reflexes.py    # Reflex sub-agent prompts
+│   ├── profiles.py                # Loads male/female profiles from .md
+│   ├── reflexes.py                # Loads reflex prompts from .md
+│   ├── male_base_system.md        # Male personality base prompt
+│   ├── male_thinking_style.md     # Male thinking style prompt
+│   ├── male_social_style.md       # Male social style prompt
+│   ├── female_base_system.md      # Female personality base prompt
+│   ├── female_thinking_style.md   # Female thinking style prompt
+│   ├── female_social_style.md     # Female social style prompt
+│   ├── reflex_fight_or_flight.md  # Fight-or-flight reflex prompt
+│   ├── reflex_startle.md          # Startle reflex prompt
+│   ├── reflex_disgust_withdrawal.md
+│   ├── reflex_social_bonding.md   # Social bonding reflex prompt
+│   ├── reflex_curiosity_orienting.md
+│   ├── supervisor_unconscious.md  # Unconscious supervisor prompt
+│   └── tool_instructions.md       # Conscious agent tool docs
 └── memory/
     ├── __init__.py
-    ├── short_term.py  # Sliding window STM
-    └── long_term.py   # JSON-backed LTM
+    ├── short_term.py              # Sliding window STM
+    └── long_term.py               # JSON-backed LTM
 ```

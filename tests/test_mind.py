@@ -46,8 +46,8 @@ class TestHumanMind:
         assert mind.conscious.stm is mind.stm
         assert mind.conscious.ltm is mind.ltm
 
-    @patch("agentic_emo.supervisor2.chat")
-    @patch("agentic_emo.supervisor1.chat_json")
+    @patch("agentic_emo.supervisor_conscious.chat")
+    @patch("agentic_emo.supervisor_unconscious.chat_json")
     def test_perceive_full_pipeline(self, mock_chat_json, mock_chat, tmp_path):
         """Full pipeline: stimulus → reflexes → conscious response."""
         # Supervisor-1: startle reflex fires
@@ -74,8 +74,8 @@ class TestHumanMind:
         assert result["conscious_result"]["response"] == "Whoa, that scared me!"
         assert "surprise" in result["emotion_snapshot"]
 
-    @patch("agentic_emo.supervisor2.chat")
-    @patch("agentic_emo.supervisor1.chat_json")
+    @patch("agentic_emo.supervisor_conscious.chat")
+    @patch("agentic_emo.supervisor_unconscious.chat_json")
     def test_perceive_increments_turn(self, mock_chat_json, mock_chat, tmp_path):
         mock_chat_json.return_value = {"fires": False}
         mock_chat.return_value = "RESPONSE: ok"
@@ -85,8 +85,8 @@ class TestHumanMind:
         mind.perceive("second")
         assert mind._turn == 2
 
-    @patch("agentic_emo.supervisor2.chat")
-    @patch("agentic_emo.supervisor1.chat_json")
+    @patch("agentic_emo.supervisor_conscious.chat")
+    @patch("agentic_emo.supervisor_unconscious.chat_json")
     def test_perceive_no_reflexes(self, mock_chat_json, mock_chat, tmp_path):
         mock_chat_json.return_value = {"fires": False}
         mock_chat.return_value = "RESPONSE: Nothing special happening."

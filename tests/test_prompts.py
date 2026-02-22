@@ -7,7 +7,7 @@ from agentic_emo.prompts.profiles import (
     FEMALE_PROFILE,
     get_profile,
 )
-from agentic_emo.prompts.reflexes import REFLEX_PROMPTS, SUPERVISOR1_SYSTEM
+from agentic_emo.prompts.reflexes import REFLEX_PROMPTS, SUPERVISOR_UNCONSCIOUS_SYSTEM
 
 
 # ── Profile tests ──────────────────────────────────────────────────
@@ -104,7 +104,7 @@ class TestReflexPrompts:
                 f"{name} system prompt should mention 'fires' field"
             )
 
-    def test_supervisor1_system_prompt(self):
-        assert "Supervisor-1" in SUPERVISOR1_SYSTEM
-        assert "reflexes" in SUPERVISOR1_SYSTEM.lower()
-        assert "JSON" in SUPERVISOR1_SYSTEM
+    def test_supervisor_unconscious_system_prompt(self):
+        assert "Supervisor-1" in SUPERVISOR_UNCONSCIOUS_SYSTEM
+        assert "reflexes" in SUPERVISOR_UNCONSCIOUS_SYSTEM.lower()
+        assert "JSON" in SUPERVISOR_UNCONSCIOUS_SYSTEM

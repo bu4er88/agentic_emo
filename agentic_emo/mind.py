@@ -2,15 +2,15 @@
 The Human Mind — top-level orchestrator.
 
 Wires together:
-  - Supervisor-1 (unconscious reflexes)
-  - Supervisor-2 (conscious reasoning)
+  - SupervisorUnconscious (reflexes)
+  - SupervisorConscious (reasoning)
   - Emotion Engine (shared dynamic state)
   - Short-term and Long-term Memory
 
 Processing pipeline for each stimulus:
   1. Emotion engine ticks (natural decay).
-  2. Supervisor-1 evaluates reflexes → emotion spikes + motor responses.
-  3. Supervisor-2 receives stimulus + reflex output + emotional context
+  2. Unconscious supervisor evaluates reflexes → emotion spikes + motor responses.
+  3. Conscious supervisor receives stimulus + reflex output + emotional context
      → conscious response (with tool use for memory & emotion adjustment).
   4. Result is returned: conscious response + internal state.
 """
@@ -24,8 +24,8 @@ from agentic_emo.emotions import EmotionEngine
 from agentic_emo.llm import LLMConfig, fast_model, strong_model
 from agentic_emo.memory.short_term import ShortTermMemory
 from agentic_emo.memory.long_term import LongTermMemory
-from agentic_emo.supervisor1 import Supervisor1
-from agentic_emo.supervisor2 import Supervisor2
+from agentic_emo.supervisor_unconscious import SupervisorUnconscious
+from agentic_emo.supervisor_conscious import SupervisorConscious
 
 log = logging.getLogger(__name__)
 
@@ -51,11 +51,11 @@ class HumanMind:
         self.ltm = LongTermMemory(path=cfg.ltm_path)
 
         # Supervisors
-        self.unconscious = Supervisor1(
+        self.unconscious = SupervisorUnconscious(
             emotion_engine=self.emotions,
             config=cfg.fast_llm,
         )
-        self.conscious = Supervisor2(
+        self.conscious = SupervisorConscious(
             sex=cfg.sex,
             emotion_engine=self.emotions,
             stm=self.stm,

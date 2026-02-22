@@ -1,9 +1,9 @@
 """
-Supervisor-1 — The Unconscious Mind.
+Supervisor Unconscious — The Unconscious Mind.
 
 Coordinates reflex sub-agents that run on fast/cheap models.
 Each reflex evaluates the stimulus independently and in parallel (conceptually).
-Supervisor-1 aggregates results and pushes emotion spikes to the EmotionEngine.
+Aggregates results and pushes emotion spikes to the EmotionEngine.
 """
 
 from __future__ import annotations
@@ -14,12 +14,12 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from agentic_emo.emotions import EmotionEngine
 from agentic_emo.llm import LLMConfig, chat_json, fast_model
-from agentic_emo.prompts.reflexes import REFLEX_PROMPTS, SUPERVISOR1_SYSTEM
+from agentic_emo.prompts.reflexes import REFLEX_PROMPTS, SUPERVISOR_UNCONSCIOUS_SYSTEM
 
 log = logging.getLogger(__name__)
 
 
-class Supervisor1:
+class SupervisorUnconscious:
     """Unconscious reflex coordinator."""
 
     def __init__(
