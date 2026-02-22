@@ -9,7 +9,7 @@ Agentic AI simulating human consciousness, unconsciousness, emotions and instinc
 │                     HumanMind                           │
 │                                                         │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  SUPERVISOR-1 (Unconscious)                       │  │
+│  │  UNCONSCIOUS SUPERVISOR                            │  │
 │  │  Fast/cheap model (gpt-4.1-mini, qwen-3b, etc.)  │  │
 │  │                                                   │  │
 │  │  Sub-agents (run in parallel):                    │  │
@@ -34,7 +34,7 @@ Agentic AI simulating human consciousness, unconsciousness, emotions and instinc
 │                 │ injected into system prompt            │
 │                 ▼                                        │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  SUPERVISOR-2 (Conscious)                         │  │
+│  │  CONSCIOUS SUPERVISOR                              │  │
 │  │  Powerful model (gpt-4.1, claude, etc.)           │  │
 │  │                                                   │  │
 │  │  Sex-specific personality (male / female)         │  │
@@ -53,10 +53,10 @@ Agentic AI simulating human consciousness, unconsciousness, emotions and instinc
 ## How it works
 
 1. A **stimulus** enters the mind (e.g. "A stranger shouts at you aggressively")
-2. **Supervisor-1** dispatches it to all reflex sub-agents in parallel (fast model)
+2. **Unconscious supervisor** dispatches it to all reflex sub-agents in parallel (fast model)
 3. Reflexes that fire produce **emotion spikes** (short-duration, high-intensity)
 4. The **Emotion Engine** updates — emotions are dynamic prompt fragments with intensity
-5. **Supervisor-2** receives the stimulus + reflex results + current emotional state
+5. **Conscious supervisor** receives the stimulus + reflex results + current emotional state
 6. It reasons using an agentic tool loop (memory recall/store, emotion adjustment, internal thought)
 7. It produces a conscious **response** — what the human says or does
 

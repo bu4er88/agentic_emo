@@ -86,12 +86,12 @@ class HumanMind:
         self.emotions.tick_all()
 
         # 2. Unconscious reflexes
-        log.info("Running Supervisor-1 (unconscious reflexes)...")
+        log.info("Running unconscious supervisor (reflexes)...")
         reflex_result = self.unconscious.process(stimulus)
         log.info("Reflexes fired: %s", [r["reflex"] for r in reflex_result["fired_reflexes"]])
 
         # 3. Conscious processing
-        log.info("Running Supervisor-2 (conscious mind)...")
+        log.info("Running conscious supervisor (reasoning)...")
         conscious_result = self.conscious.process(stimulus, reflex_result)
         log.info("Conscious response: %s", conscious_result["response"][:100])
 

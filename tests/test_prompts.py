@@ -105,6 +105,6 @@ class TestReflexPrompts:
             )
 
     def test_supervisor_unconscious_system_prompt(self):
-        assert "Supervisor-1" in SUPERVISOR_UNCONSCIOUS_SYSTEM
+        assert "unconscious supervisor" in SUPERVISOR_UNCONSCIOUS_SYSTEM.lower()
         assert "reflexes" in SUPERVISOR_UNCONSCIOUS_SYSTEM.lower()
         assert "JSON" in SUPERVISOR_UNCONSCIOUS_SYSTEM

@@ -50,7 +50,7 @@ class TestHumanMind:
     @patch("agentic_emo.supervisor_unconscious.chat_json")
     def test_perceive_full_pipeline(self, mock_chat_json, mock_chat, tmp_path):
         """Full pipeline: stimulus → reflexes → conscious response."""
-        # Supervisor-1: startle reflex fires
+        # Unconscious supervisor: startle reflex fires
         def reflex_side_effect(config, system, prompt):
             if "STARTLE" in system:
                 return {
@@ -62,7 +62,7 @@ class TestHumanMind:
 
         mock_chat_json.side_effect = reflex_side_effect
 
-        # Supervisor-2: direct response
+        # Conscious supervisor: direct response
         mock_chat.return_value = "RESPONSE: Whoa, that scared me!"
 
         mind = HumanMind(config=_make_config(tmp_path))
