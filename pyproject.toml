@@ -1,0 +1,17 @@
+[project]
+name = "agentic-emo"
+version = "0.1.0"
+description = "Agentic AI simulating human consciousness, unconsciousness, emotions and instincts"
+requires-python = ">=3.11"
+dependencies = [
+    "openai>=1.40.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+agentic-emo = "agentic_emo.main:cli"
