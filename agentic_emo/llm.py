@@ -33,7 +33,7 @@ class LLMConfig:
 # ── pre-baked configs (users can override via env or constructor) ─────
 
 def fast_model() -> LLMConfig:
-    """Cheap/fast model for reflexes (Supervisor-1 sub-agents)."""
+    """Cheap/fast model for reflexes (unconscious supervisor sub-agents)."""
     return LLMConfig(
         model=os.environ.get("AGENTIC_FAST_MODEL", "gpt-4.1-mini"),
         temperature=0.3,
@@ -42,7 +42,7 @@ def fast_model() -> LLMConfig:
 
 
 def strong_model() -> LLMConfig:
-    """Powerful model for consciousness (Supervisor-2)."""
+    """Powerful model for consciousness (conscious supervisor)."""
     return LLMConfig(
         model=os.environ.get("AGENTIC_STRONG_MODEL", "gpt-4.1"),
         temperature=0.7,

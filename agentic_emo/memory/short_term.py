@@ -2,7 +2,7 @@
 Short-Term Memory (STM) — a sliding window of recent experiences.
 
 Works like a bounded deque: newest items push oldest out.
-Used by Supervisor-2 as a tool to recall recent context.
+Used by the conscious supervisor as a tool to recall recent context.
 """
 
 from __future__ import annotations

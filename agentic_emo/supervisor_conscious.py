@@ -1,5 +1,5 @@
 """
-Supervisor-2 — The Conscious Mind.
+Supervisor Conscious — The Conscious Mind.
 
 A powerful reasoning agent that:
 - Receives the stimulus + reflex results + emotional state as context.
@@ -13,6 +13,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+from pathlib import Path
 
 from agentic_emo.emotions import EmotionEngine
 from agentic_emo.llm import LLMConfig, chat, strong_model
@@ -25,57 +26,11 @@ log = logging.getLogger(__name__)
 # Maximum tool-use loops before we force a final answer
 MAX_TOOL_ROUNDS = 5
 
-TOOL_INSTRUCTIONS = """\
-
-## Available tools
-
-You can call tools by writing a line starting with `TOOL_CALL:` followed by JSON.
-You may call multiple tools per turn. After all tool calls are processed you will
-receive the results and can continue reasoning.
-
-### stm_store
-Store something in short-term memory.
-```
-TOOL_CALL: {"tool": "stm_store", "content": "...", "source": "conscious"}
-```
-
-### stm_recall
-Recall recent short-term memories.
-```
-TOOL_CALL: {"tool": "stm_recall", "n": 5}
-```
-
-### ltm_store
-Store something in long-term memory with tags and importance.
-```
-TOOL_CALL: {"tool": "ltm_store", "content": "...", "tags": ["tag1"], "importance": 0.7}
-```
-
-### ltm_search
-Search long-term memory by keyword.
-```
-TOOL_CALL: {"tool": "ltm_search", "query": "..."}
-```
-
-### emotion_adjust
-Gently shift an emotion (long-lasting conscious adjustment).
-Amount can be negative (suppress) or positive (amplify), range -0.3 to +0.3.
-```
-TOOL_CALL: {"tool": "emotion_adjust", "emotion": "joy", "amount": 0.1}
-```
-
-### think
-Internal monologue — reason step by step before acting. This is private.
-```
-TOOL_CALL: {"tool": "think", "thought": "Let me consider..."}
-```
-
-When you are done thinking and using tools, produce your FINAL conscious response
-on a line starting with `RESPONSE:`. This is what the human says or does outwardly.
-"""
+_PROMPTS_DIR = Path(__file__).parent / "prompts"
+TOOL_INSTRUCTIONS = (_PROMPTS_DIR / "tool_instructions.md").read_text()
 
 
-class Supervisor2:
+class SupervisorConscious:
     """Conscious reasoning agent with memory and emotion tools."""
 
     def __init__(
@@ -148,7 +103,7 @@ class Supervisor2:
 
         if tool == "think":
             # Internal monologue — no side effect, just acknowledged
-            return f"[internal thought noted]"
+            return "[internal thought noted]"
 
         return f"Unknown tool: {tool}"
 

@@ -116,7 +116,7 @@ class EmotionEngine:
     # ── prompt rendering ─────────────────────────────────────────────
 
     def render_prompt(self, threshold: float = 0.05) -> str:
-        """Build the dynamic emotional context injected into Supervisor-2."""
+        """Build the dynamic emotional context injected into the conscious supervisor."""
         self.tick_all()
         active = sorted(
             [(e.name, e.intensity) for e in self.emotions.values() if e.intensity >= threshold],
